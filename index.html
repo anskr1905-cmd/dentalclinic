@@ -220,6 +220,11 @@
             background: #004b8f;
             transform: scale(1.01);
         }
+        .btn-block:disabled {
+            background: #80b5dc;
+            cursor: not-allowed;
+            transform: none;
+        }
         .privacy-note {
             color: #5f7d91;
             font-size: 14px;
@@ -231,7 +236,23 @@
         .privacy-note i {
             color: #38a169;
         }
-        /* no tickbox — just a note */
+        /* thank you message */
+        .thankyou-message {
+            background: #e3f7e3;
+            border: 1px solid #a8d8a8;
+            color: #1f6b1f;
+            padding: 16px 22px;
+            border-radius: 60px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+        .hidden {
+            display: none;
+        }
         .key-services {
             padding: 60px 0;
             background: white;
@@ -299,7 +320,7 @@
         }
         .review-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columnions: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 20px;
         }
@@ -432,7 +453,7 @@
         </div>
     </div>
 
-    <!-- hero + appointment form (name + phone, no tickbox) -->
+    <!-- hero + appointment form (name + phone, no tickbox, Web3Forms integrated) -->
     <div class="hero-section">
         <div class="container hero-grid">
             <div class="hero-left">
@@ -450,20 +471,33 @@
                 <h2>Book Your Appointment</h2>
                 <div class="sub"><i class="fas fa-check-circle"></i> Free consultation • No spam</div>
 
-                <div class="input-group">
-                    <label><i class="fas fa-user"></i> Your name</label>
-                    <input type="text" placeholder="e.g. Rajesh Kumar" id="nameInput">
-                </div>
-                <div class="input-group">
-                    <label><i class="fas fa-phone-alt"></i> Phone number</label>
-                    <input type="tel" placeholder="+91 98765 43210" id="phoneInput">
-                    <div class="phone-hint"><i class="fas fa-info-circle"></i> Enter 10-digit mobile number</div>
+                <!-- Thank you message (hidden initially) -->
+                <div id="thankyouMessage" class="thankyou-message hidden">
+                    <i class="fas fa-check-circle"></i> Thank you! We'll call you shortly.
                 </div>
 
-                <button class="btn-block" onclick="alert('Appointment request sent (demo). We’ll call you shortly.')">Confirm appointment</button>
-                <div class="privacy-note">
-                    <i class="fas fa-lock"></i> We never share your info
-                </div>
+                <!-- Web3Forms Form -->
+                <form id="appointmentForm">
+                    <!-- Web3Forms access key (replace with your own if needed) -->
+                    <input type="hidden" name="access_key" value="bbc68695-ea6a-4a7d-86b7-987602ea7eaf">
+                    <input type="hidden" name="subject" value="New Dental Appointment Request">
+                    <input type="hidden" name="from_name" value="Dental Clinic Website">
+                    
+                    <div class="input-group">
+                        <label><i class="fas fa-user"></i> Your name</label>
+                        <input type="text" name="name" placeholder="e.g. Rajesh Kumar" required>
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-phone-alt"></i> Phone number</label>
+                        <input type="tel" name="phone" placeholder="+91 98765 43210" id="phoneInput" required>
+                        <div class="phone-hint"><i class="fas fa-info-circle"></i> Enter 10-digit mobile number</div>
+                    </div>
+
+                    <button type="submit" class="btn-block" id="submitBtn">Confirm appointment</button>
+                    <div class="privacy-note">
+                        <i class="fas fa-lock"></i> We never share your info
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -555,7 +589,7 @@
         </div>
     </div>
 
-    <!-- locations, safety, FAQ (kept similar to original but shortened for brevity) -->
+    <!-- locations, safety, FAQ (kept similar) -->
     <div class="location-section">
         <div class="container">
             <div class="section-title">Find Us Across India</div>
@@ -619,10 +653,55 @@
     </footer>
 
     <script>
+        // Phone number digit-only and max 10 digits
         document.getElementById('phoneInput')?.addEventListener('input', function(e) {
             let val = e.target.value.replace(/\D/g,'');
             if (val.length > 10) val = val.slice(0,10);
             e.target.value = val;
+        });
+
+        // Handle Web3Forms submission without redirect
+        const form = document.getElementById('appointmentForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const thankyouMsg = document.getElementById('thankyouMessage');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault(); // Prevent default form submission (no redirect)
+
+            // Disable button to prevent double submission
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            // Collect form data
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Show thank you message
+                    thankyouMsg.classList.remove('hidden');
+                    // Clear form fields
+                    form.reset();
+                    // Hide message after 5 seconds (optional)
+                    setTimeout(() => {
+                        thankyouMsg.classList.add('hidden');
+                    }, 5000);
+                } else {
+                    alert('Something went wrong. Please try again.');
+                }
+            } catch (error) {
+                alert('Network error. Please check your connection.');
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Confirm appointment';
+            }
         });
     </script>
 </body>
