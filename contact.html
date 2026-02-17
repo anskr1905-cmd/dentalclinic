@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Dental Clinic</title>
+    <style>
+        *{margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',Roboto,sans-serif;}
+        body{background:#f5f7fa; color:#1e2b37;}
+        .container{max-width:1200px; margin:0 auto; padding:0 24px;}
+        .top-bar{background:#1e2b37; color:white; padding:10px 0;}
+        .top-bar .container{display:flex; justify-content:space-between;}
+        .emergency{color:#ffb347;}
+        .navbar{background:white; padding:16px 0; border-bottom:1px solid #e0eef5;}
+        .navbar .container{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;}
+        .logo{font-size:28px; font-weight:700;}
+        .logo span{color:#0066b3;}
+        .nav-links{display:flex; gap:28px; font-weight:600;}
+        .nav-links a{text-decoration:none; color:#1e3b4c;}
+        .nav-links a:hover{color:#0066b3;}
+        .helpline{background:#f0f7ff; padding:10px 18px; border-radius:40px; color:#0066b3; border:1px dashed #0066b3;}
+        .page-header{background:linear-gradient(145deg,#e8f1f9,#ffffff); padding:40px 0; text-align:center;}
+        .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; background:white; border-radius:40px; padding:50px; margin:40px 0; box-shadow:0 10px 30px #d9e6f2;}
+        .info-item{margin:30px 0; display:flex; gap:20px; align-items:center;}
+        .info-item i{font-size:30px; color:#0066b3; width:50px;}
+        .contact-form input, .contact-form textarea{width:100%; padding:16px; border:1.5px solid #dae9f2; border-radius:30px; margin-bottom:20px; font-size:16px;}
+        .btn{background:#0066b3; color:white; border:none; padding:16px 30px; border-radius:60px; font-weight:700; cursor:pointer;}
+        footer{background:#0f2a36; color:#ccdce8; padding:40px 0; text-align:center;}
+        .footer-links a{color:#e2edf5; text-decoration:none; margin:0 15px;}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="top-bar"><div class="container"><div><span class="emergency"><i class="fas fa-ambulance"></i> Emergency: -</span> 24/7 care</div><div><i class="fas fa-map-pin"></i> 600+ clinics</div></div></div>
+    <div class="navbar"><div class="container"><div class="logo"><span>DENTAL</span> DENTAL</div><div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a></div><div class="helpline"><i class="fas fa-phone-alt"></i> 24/7 Helpline</div></div></div>
+
+    <div class="page-header"><div class="container"><h1 style="font-size:48px;">Get in touch</h1><p style="font-size:18px;">We're here to help with any questions</p></div></div>
+
+    <div class="container"><div class="contact-grid">
+        <div><h2 style="font-size:32px;">Contact information</h2>
+            <div class="info-item"><i class="fas fa-phone"></i><div><strong>Helpline</strong><br>+91 98765 43210 (24/7)</div></div>
+            <div class="info-item"><i class="fas fa-envelope"></i><div><strong>Email</strong><br>care@dentalclinic.in</div></div>
+            <div class="info-item"><i class="fas fa-map-marker-alt"></i><div><strong>Head office</strong><br>MG Road, Bengaluru - 560001</div></div>
+            <div style="margin-top:40px;"><strong>Clinic locator:</strong> 600+ clinics in 23 cities. See home page for city-wise list.</div>
+        </div>
+        <div class="contact-form"><h2 style="font-size:32px;">Send a message</h2>
+            <input type="text" placeholder="Your name"><br>
+            <input type="email" placeholder="Email address"><br>
+            <input type="tel" placeholder="Phone number"><br>
+            <textarea rows="4" placeholder="Your message"></textarea><br>
+            <button class="btn" onclick="alert('Message sent (demo). We will reply soon.')">Send message</button>
+            <p style="margin-top:15px; color:#4f6f80;"><i class="fas fa-lock"></i> No tickbox, no spam</p>
+        </div>
+    </div></div>
+
+    <footer><div class="container"><div style="font-size:26px;"><span style="color:#77b9e0;">DENTAL</span> DENTAL</div><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a></div><hr><p>© 2025 Dental Clinic</p></div></footer>
+</body>
+</html>
