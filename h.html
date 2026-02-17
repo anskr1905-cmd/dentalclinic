@@ -3,65 +3,146 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SilkRoot · Hair Transplant | Bootstrap scrollers</title>
-  <!-- Bootstrap 5 + icons + Font Awesome (optional but kept) -->
+  <title>SilkRoot · Hair Transplant | updated colors + call now</title>
+  <!-- Bootstrap 5 + icons & font awesome -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome 6 (free) for extra icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- custom tweaks -->
   <style>
-    :root { --bs-primary: #0b2b40; --bs-secondary: #b76e42; }
-    .bg-primary-soft { background-color: #f2f7fb; }
+    :root {
+      --primary-deep: #0a3a2e;      /* new logo greenish-teal */
+      --secondary-warm: #c96e4b;     /* warmer copper */
+      --soft-bg: #f7f3f0;
+    }
+    .bg-soft { background-color: var(--soft-bg); }
+    .text-deep { color: var(--primary-deep); }
+    .text-copper { color: var(--secondary-warm); }
+    .btn-copper {
+      background: var(--secondary-warm);
+      border: none;
+      color: white;
+      border-radius: 40px;
+      padding: 0.6rem 1.8rem;
+      font-weight: 500;
+    }
+    .btn-copper:hover {
+      background: #b15835;
+      color: white;
+    }
+    .btn-outline-deep {
+      border: 2px solid var(--primary-deep);
+      color: var(--primary-deep);
+      border-radius: 40px;
+      padding: 0.5rem 1.8rem;
+      font-weight: 500;
+    }
+    .btn-outline-deep:hover {
+      background: var(--primary-deep);
+      color: white;
+    }
     .section-title { font-weight: 600; letter-spacing: -0.02em; }
-    .section-title span { color: #b76e42; border-bottom: 3px solid #edd6c4; padding-bottom: 4px; }
-    .doctor-card, .review-card { transition: transform 0.2s; border: none; box-shadow: 0 12px 28px -8px rgba(0,40,40,0.08); }
+    .section-title span { color: var(--secondary-warm); border-bottom: 3px solid #e4c2b2; padding-bottom: 4px; }
+    /* doctor/review cards */
+    .doctor-card, .review-card { transition: transform 0.2s; border: none; box-shadow: 0 12px 28px -8px rgba(10,58,46,0.08); }
     .doctor-card:hover, .review-card:hover { transform: scale(1.02); }
-    .web3-form-input { border-radius: 40px; background: #f5f8fc; border: 1px solid #e2eaf1; }
-    .btn-dark-custom { background: #0b2b40; color: white; border-radius: 40px; padding: 0.6rem 2rem; font-weight: 500; border: 1px solid #1e4456; }
-    .btn-dark-custom:hover { background: #143e52; color: white; }
-    /* horizontal scroller (images) */
     .scroller-wrapper { overflow-x: auto; white-space: nowrap; padding: 20px 0; scrollbar-width: thin; }
     .scroller-wrapper::-webkit-scrollbar { height: 8px; }
-    .scroller-wrapper::-webkit-scrollbar-thumb { background: #b0c5d4; border-radius: 20px; }
+    .scroller-wrapper::-webkit-scrollbar-thumb { background: #bcac9f; border-radius: 20px; }
     .doctor-scroller { display: inline-flex; gap: 30px; flex-wrap: nowrap; }
-    .doctor-scroller .card { width: 260px; display: inline-block; white-space: normal; border: none; border-radius: 40px; background: #ffffff; box-shadow: 0 10px 28px #e0ecf3; }
-    .doc-img-placeholder { width: 130px; height: 130px; border-radius: 50%; background: #bed7e6; margin: 20px auto 10px; display: flex; align-items: center; justify-content: center; font-size: 50px; color: #1d4957; background-size: cover; background-position: center; }
-    /* real face images (via unsplash / placeholder but we'll use nice avatar style) – using free face images from UI Faces (placekitten alternative not professional, but we use fontawesome as fallback) but we add background images for real doctors feel (pexels) – I use placekitten for demo, but replace with actual doctor images – for authentic we use pexels free stock images attribution: pexels (but we can use inline style). For safety and attractiveness we use unsplash gender neutral faces but generic. */
-    /* footer */
-    .footer { background: #0f232e; color: #d9e7ee; }
-    .footer a { color: #cbdbe6; text-decoration: none; }
-    .footer a:hover { color: white; }
-    /* keep review images */
+    .doctor-scroller .card { width: 260px; display: inline-block; white-space: normal; border: none; border-radius: 40px; }
+    .doc-img-placeholder { width: 130px; height: 130px; border-radius: 50%; margin: 20px auto 10px; background-size: cover; background-position: center; }
     .avatar-img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+    /* header new colors */
+    .logo-new .logo-deep { color: #0a3a2e; font-weight: 700; }
+    .logo-new .logo-copper { color: #c96e4b; font-weight: 300; }
+    /* form container below header */
+    .form-section-below {
+      background: #ffffff;
+      border-bottom: 1px solid #f0e3db;
+      padding: 24px 0;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.02);
+    }
+    .web3-input-group {
+      background: #f9f6f3;
+      border-radius: 60px;
+      border: 1px solid #e2d9d2;
+      overflow: hidden;
+    }
+    .web3-input-group input {
+      border: none;
+      background: transparent;
+      padding: 12px 20px;
+      font-size: 1rem;
+      outline: none;
+      width: 220px;
+    }
+    .web3-input-group input::placeholder { color: #9b8f88; font-weight: 300; }
+    .web3-input-group button {
+      background: var(--primary-deep);
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 0 28px;
+      height: 52px;
+      border-radius: 60px;
+      margin: 4px;
+      transition: 0.2s;
+    }
+    .web3-input-group button:hover { background: #0e4f3f; }
+    /* footer */
+    .footer { background: #0f2c26; color: #d0dfda; }
+    .footer a { color: #bccfc8; text-decoration: none; }
+    .footer a:hover { color: white; }
   </style>
 </head>
 <body>
 
-<!-- ========== HEADER with web3form (no tickbox) ========== -->
-<header class="bg-white border-bottom py-3">
-  <div class="container d-flex flex-wrap align-items-center justify-content-between">
+<!-- ========== HEADER (only logo + call now button, no form) ========== -->
+<header class="bg-white py-3 border-bottom">
+  <div class="container d-flex align-items-center justify-content-between">
+    <!-- new colors logo: deep green + copper -->
     <div class="d-flex align-items-center gap-2">
-      <div class="bg-dark text-white rounded-4 p-2"><i class="fas fa-leaf fs-4"></i></div>
-      <span class="fw-bold fs-3" style="color:#0b2b40;">Silk<span style="color:#b76e42;">Root</span></span>
+      <div style="background: #0a3a2e; border-radius: 14px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;">
+        <i class="fas fa-leaf fs-4" style="color: #e2b48c;"></i>
+      </div>
+      <span class="logo-new fs-2 fw-bold">
+        <span class="logo-deep">Silk</span><span class="logo-copper">Root</span>
+      </span>
     </div>
-
-    <!-- web3form – bootstrap style, no tickbox -->
-    <form class="d-flex flex-wrap gap-2 align-items-center" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="98b2004e-9bb7-4c2f-b95d-f2447c443f74">
-      <div class="input-group web3-form-input" style="max-width:260px;">
-        <span class="input-group-text bg-transparent border-0"><i class="far fa-user text-secondary"></i></span>
-        <input type="text" class="form-control border-0 bg-transparent" name="name" placeholder="Your name" required>
-      </div>
-      <div class="input-group web3-form-input" style="max-width:260px;">
-        <span class="input-group-text bg-transparent border-0"><i class="fas fa-phone-alt text-secondary"></i></span>
-        <input type="tel" class="form-control border-0 bg-transparent" name="phone" placeholder="Phone number" required>
-      </div>
-      <!-- honeypot (hidden) -->
-      <input type="checkbox" name="botcheck" style="display:none;">
-      <button type="submit" class="btn btn-dark-custom"><i class="fas fa-paper-plane me-2"></i>Send</button>
-    </form>
+    <!-- CALL NOW BUTTON (link to +91-999999999) -->
+    <a href="tel:+91999999999" class="btn btn-copper"><i class="fas fa-phone-alt me-2"></i>Call now</a>
   </div>
 </header>
+
+<!-- ========== WEB3FORM SECTION (placed below header, no tickbox) ========== -->
+<section class="form-section-below">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10">
+        <!-- web3form – name + phone, no tickbox / no force -->
+        <form class="d-flex flex-wrap gap-3 align-items-center justify-content-center" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="98b2004e-9bb7-4c2f-b95d-f2447c443f74">
+          
+          <div class="web3-input-group d-flex align-items-center bg-white shadow-sm">
+            <span class="ps-3 text-secondary"><i class="far fa-user"></i></span>
+            <input type="text" name="name" placeholder="Your name" required>
+          </div>
+          <div class="web3-input-group d-flex align-items-center bg-white shadow-sm">
+            <span class="ps-3 text-secondary"><i class="fas fa-phone-alt"></i></span>
+            <input type="tel" name="phone" placeholder="Phone number" required>
+          </div>
+          
+          <!-- honeypot (hidden) -->
+          <input type="checkbox" name="botcheck" style="display: none;">
+          
+          <button type="submit" class="btn text-white border-0" style="background: #0a3a2e; border-radius: 60px; padding: 0 32px; height: 52px; font-weight: 600;">
+            <i class="fas fa-paper-plane me-2"></i>Send
+          </button>
+        </form>
+        <p class="text-center text-muted small mt-3 mb-0">We'll contact you shortly — no tickbox required</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <main>
   <!-- ========== HAIR TREATMENT ========== -->
@@ -70,7 +151,7 @@
     <div class="row g-4">
       <div class="col-md-3 col-sm-6">
         <div class="card h-100 border-0 shadow-sm rounded-5 p-3 text-center">
-          <div class="bg-primary-soft rounded-4 mx-auto p-3 fs-1" style="width:80px; color:#0b2b40;"><i class="fas fa-microscope"></i></div>
+          <div class="bg-soft rounded-4 mx-auto p-3 fs-1 text-deep" style="width:80px;"><i class="fas fa-microscope"></i></div>
           <div class="card-body">
             <h4 class="fw-semibold">FUE</h4>
             <p class="text-secondary">Follicular Unit Extraction – minimal scarring.</p>
@@ -79,7 +160,7 @@
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="card h-100 border-0 shadow-sm rounded-5 p-3 text-center">
-          <div class="bg-primary-soft rounded-4 mx-auto p-3 fs-1" style="width:80px; color:#0b2b40;"><i class="fas fa-bezier-curve"></i></div>
+          <div class="bg-soft rounded-4 mx-auto p-3 fs-1 text-deep" style="width:80px;"><i class="fas fa-bezier-curve"></i></div>
           <div class="card-body">
             <h4 class="fw-semibold">DHI</h4>
             <p class="text-secondary">Direct Implantation, no shave needed.</p>
@@ -88,7 +169,7 @@
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="card h-100 border-0 shadow-sm rounded-5 p-3 text-center">
-          <div class="bg-primary-soft rounded-4 mx-auto p-3 fs-1" style="width:80px; color:#0b2b40;"><i class="fas fa-hand-holding-heart"></i></div>
+          <div class="bg-soft rounded-4 mx-auto p-3 fs-1 text-deep" style="width:80px;"><i class="fas fa-hand-holding-heart"></i></div>
           <div class="card-body">
             <h4 class="fw-semibold">PRP therapy</h4>
             <p class="text-secondary">Platelet-rich plasma for natural boost.</p>
@@ -97,7 +178,7 @@
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="card h-100 border-0 shadow-sm rounded-5 p-3 text-center">
-          <div class="bg-primary-soft rounded-4 mx-auto p-3 fs-1" style="width:80px; color:#0b2b40;"><i class="fas fa-seedling"></i></div>
+          <div class="bg-soft rounded-4 mx-auto p-3 fs-1 text-deep" style="width:80px;"><i class="fas fa-seedling"></i></div>
           <div class="card-body">
             <h4 class="fw-semibold">Bio‑Fibrin</h4>
             <p class="text-secondary">Stem cell enriched coverage.</p>
@@ -108,13 +189,11 @@
   </section>
 
   <!-- ========== CUSTOMER REVIEWS (scroller with images) ========== -->
-  <section class="bg-primary-soft py-5">
+  <section class="bg-soft py-5">
     <div class="container">
       <h2 class="display-5 fw-semibold section-title mb-4"><span>Real</span> customer reviews</h2>
-      <!-- horizontal scroller (bootstrap row flex nowrap) -->
       <div class="scroller-wrapper">
         <div class="d-flex flex-nowrap gap-4">
-          <!-- review card 1 -->
           <div class="card review-card rounded-5 p-4" style="min-width:320px;">
             <div class="d-flex align-items-center gap-3 mb-3">
               <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar-img" alt="customer">
@@ -123,7 +202,6 @@
             <p class="text-secondary">"After years of hiding my crown, I finally have a full hairline. The team is incredibly warm."</p>
             <small class="text-muted">FUE, 4 months ago</small>
           </div>
-          <!-- review card 2 -->
           <div class="card review-card rounded-5 p-4" style="min-width:320px;">
             <div class="d-flex align-items-center gap-3 mb-3">
               <img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar-img" alt="customer">
@@ -132,7 +210,6 @@
             <p class="text-secondary">"I travelled from abroad. The result is even better than I imagined. Coordinator helped a lot."</p>
             <small class="text-muted">DHI, 8 months ago</small>
           </div>
-          <!-- review card 3 -->
           <div class="card review-card rounded-5 p-4" style="min-width:320px;">
             <div class="d-flex align-items-center gap-3 mb-3">
               <img src="https://randomuser.me/api/portraits/women/68.jpg" class="avatar-img" alt="customer">
@@ -141,7 +218,6 @@
             <p class="text-secondary">"PRP sessions made a big difference – my hair feels thicker. Thank you SilkRoot!"</p>
             <small class="text-muted">PRP therapy</small>
           </div>
-          <!-- review card 4 (extra) -->
           <div class="card review-card rounded-5 p-4" style="min-width:320px;">
             <div class="d-flex align-items-center gap-3 mb-3">
               <img src="https://randomuser.me/api/portraits/men/62.jpg" class="avatar-img" alt="customer">
@@ -158,40 +234,34 @@
   <!-- ========== MEET OUR EXPERT DOCTORS (image scroller) ========== -->
   <section class="container my-5">
     <h2 class="display-5 fw-semibold section-title mb-4"><span>Meet our</span> expert doctors</h2>
-    <!-- scroller wrapper with images (realistic medical faces) using unsplash/randomuser – we'll use free diverse doctor images from randomuser but with medical style, and background images for the doc placeholder. For better real faces, we use UI Faces but randomuser is real people. -->
     <div class="scroller-wrapper">
       <div class="doctor-scroller">
-        <!-- doctor 1 -->
         <div class="card doctor-card p-3">
-          <div class="doc-img-placeholder" style="background-image: url('https://randomuser.me/api/portraits/women/28.jpg'); background-size: cover;"></div>
+          <div class="doc-img-placeholder" style="background-image: url('https://randomuser.me/api/portraits/women/28.jpg');"></div>
           <h4 class="fw-semibold mb-1">Dr. Alina Costa</h4>
           <p class="text-secondary small">Lead surgeon, 14+ years</p>
           <p class="small">Pioneer in minimally invasive FUE, international trainer.</p>
         </div>
-        <!-- doctor 2 -->
         <div class="card doctor-card p-3">
-          <div class="doc-img-placeholder" style="background-image: url('https://randomuser.me/api/portraits/men/52.jpg'); background-size: cover;"></div>
+          <div class="doc-img-placeholder" style="background-image: url('https://randomuser.me/api/portraits/men/52.jpg');"></div>
           <h4 class="fw-semibold mb-1">Dr. Viktor Hahn</h4>
           <p class="text-secondary small">Trichologist & implant specialist</p>
           <p class="small">Former head of European hair restoration society.</p>
         </div>
-        <!-- doctor 3 -->
         <div class="card doctor-card p-3">
-          <div class="doc-img-placeholder" style="background-image: url('https://randomuser.me/api/portraits/women/56.jpg'); background-size: cover;"></div>
+          <div class="doc-img-placeholder" style="background-image: url('https://randomuser.me/api/portraits/women/56.jpg');"></div>
           <h4 class="fw-semibold mb-1">Dr. Meera Patel</h4>
           <p class="text-secondary small">Dermatosurgeon, FUE & DHI</p>
           <p class="small">Known for natural hairlines & female hair restoration.</p>
         </div>
-        <!-- doctor 4 -->
         <div class="card doctor-card p-3">
-          <div class="doc-img-placeholder" style="background-image: url('https://randomuser.me/api/portraits/men/72.jpg'); background-size: cover;"></div>
+          <div class="doc-img-placeholder" style="background-image: url('https://randomuser.me/api/portraits/men/72.jpg');"></div>
           <h4 class="fw-semibold mb-1">Dr. James Okafor</h4>
           <p class="text-secondary small">Senior consultant</p>
           <p class="small">Over 3000 successful transplant procedures.</p>
         </div>
-        <!-- doctor 5 (extra, to show scroller) -->
         <div class="card doctor-card p-3">
-          <div class="doc-img-placeholder" style="background-image: url('https://randomuser.me/api/portraits/women/65.jpg'); background-size: cover;"></div>
+          <div class="doc-img-placeholder" style="background-image: url('https://randomuser.me/api/portraits/women/65.jpg');"></div>
           <h4 class="fw-semibold mb-1">Dr. Lena Fischer</h4>
           <p class="text-secondary small">Hair restoration surgeon</p>
           <p class="small">Specialist in high-density FUE / BHT.</p>
@@ -206,29 +276,29 @@
       <h2 class="display-5 fw-semibold section-title mb-5"><span>Why choose</span> SilkRoot?</h2>
       <div class="row g-4">
         <div class="col-lg-3 col-md-6">
-          <div class="border-0 shadow-sm rounded-5 p-4 text-center bg-light">
-            <i class="fas fa-user-check fs-1" style="color:#0b2b40;"></i>
+          <div class="border-0 shadow-sm rounded-5 p-4 text-center bg-soft">
+            <i class="fas fa-user-check fs-1 text-deep"></i>
             <h4 class="fw-bold mt-3">100% medical team</h4>
             <p class="text-secondary">Only doctors perform every step.</p>
           </div>
         </div>
         <div class="col-lg-3 col-md-6">
-          <div class="border-0 shadow-sm rounded-5 p-4 text-center bg-light">
-            <i class="fas fa-clock fs-1" style="color:#0b2b40;"></i>
+          <div class="border-0 shadow-sm rounded-5 p-4 text-center bg-soft">
+            <i class="fas fa-clock fs-1 text-deep"></i>
             <h4 class="fw-bold mt-3">Same‑day recovery</h4>
             <p class="text-secondary">No‑stitch method, back in 24h.</p>
           </div>
         </div>
         <div class="col-lg-3 col-md-6">
-          <div class="border-0 shadow-sm rounded-5 p-4 text-center bg-light">
-            <i class="fas fa-chart-line fs-1" style="color:#0b2b40;"></i>
+          <div class="border-0 shadow-sm rounded-5 p-4 text-center bg-soft">
+            <i class="fas fa-chart-line fs-1 text-deep"></i>
             <h4 class="fw-bold mt-3">95% growth rate</h4>
             <p class="text-secondary">Verified by trichology institute.</p>
           </div>
         </div>
         <div class="col-lg-3 col-md-6">
-          <div class="border-0 shadow-sm rounded-5 p-4 text-center bg-light">
-            <i class="fas fa-euro-sign fs-1" style="color:#0b2b40;"></i>
+          <div class="border-0 shadow-sm rounded-5 p-4 text-center bg-soft">
+            <i class="fas fa-euro-sign fs-1 text-deep"></i>
             <h4 class="fw-bold mt-3">Fixed all‑in price</h4>
             <p class="text-secondary">No hidden fees, lifetime support.</p>
           </div>
@@ -237,8 +307,8 @@
     </div>
   </section>
 
-  <!-- ========== FREQUENTLY ASKED QUESTION ========== -->
-  <section class="bg-primary-soft py-5">
+  <!-- ========== FREQUENTLY ASKED QUESTION (bootstrap accordion) ========== -->
+  <section class="bg-soft py-5">
     <div class="container">
       <h2 class="display-5 fw-semibold section-title mb-4"><span>Frequently</span> asked questions</h2>
       <div class="accordion" id="faqAccordion">
@@ -276,8 +346,8 @@
   <div class="container">
     <div class="row gy-4">
       <div class="col-md-4">
-        <div class="fw-bold fs-3 text-white">Silk<span style="color:#c5865e;">Root</span></div>
-        <p class="my-3" style="color:#b3cfdd;">Hair restoration, rooted in care & science. Premium clinics.</p>
+        <div class="fw-bold fs-3"><span style="color:#e2b48c;">Silk</span><span style="color:#c96e4b;">Root</span></div>
+        <p class="my-3 small">Hair restoration, rooted in care & science. Premium clinics.</p>
         <div class="d-flex gap-3 fs-5">
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -286,24 +356,23 @@
       </div>
       <div class="col-md-2">
         <h5 class="text-white">Treatments</h5>
-        <ul class="list-unstyled"><li><a href="#">FUE</a></li><li><a href="#">DHI</a></li><li><a href="#">PRP</a></li><li><a href="#">Medical care</a></li></ul>
+        <ul class="list-unstyled"><li><a href="#">FUE</a></li><li><a href="#">DHI</a></li><li><a href="#">PRP</a></li></ul>
       </div>
       <div class="col-md-3">
         <h5 class="text-white">Info</h5>
-        <ul class="list-unstyled"><li><a href="#">About us</a></li><li><a href="#">Locations</a></li><li><a href="#">Financing</a></li><li><a href="#">Journal</a></li></ul>
+        <ul class="list-unstyled"><li><a href="#">About us</a></li><li><a href="#">Locations</a></li><li><a href="#">Journal</a></li></ul>
       </div>
       <div class="col-md-3">
         <h5 class="text-white">Contact</h5>
-        <ul class="list-unstyled"><li><a href="#">+43 1 234 5678</a></li><li><a href="#">hello@silkroot.com</a></li><li>Praterstraße 12, Vienna</li></ul>
+        <ul class="list-unstyled"><li><a href="tel:+91999999999">+91-999999999</a></li><li><a href="#">hello@silkroot.com</a></li><li>Praterstraße 12, Vienna</li></ul>
       </div>
     </div>
     <hr class="text-white-50 mt-4">
-    <div class="text-center small text-white-50">© 2025 SilkRoot — no tickbox, data via Web3Forms. Images by randomuser (demo).</div>
+    <div class="text-center small text-white-50">© 2025 SilkRoot — no tickbox, data via Web3Forms. Call now button active.</div>
   </div>
 </footer>
 
-<!-- Bootstrap JS for accordion & scroller (no extra needed for scroll) -->
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- optional FAQ toggle handled by bootstrap accordion now -->
 </body>
 </html>
